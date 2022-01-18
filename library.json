@@ -1,0 +1,18 @@
+{
+    "name": "HX711_ADC",
+    "version": "1.2.11",
+    "description": "Non-blocking, smoothed data from 'Moving average' rolling data set. Support for doing conversions on multiple HX711 modules simultaneously. Examples also includes calibration procedure and interrupt drive.",
+    "keywords": "sensors, ADC, weight scales",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DillyPickly/HX711_ADC.git"
+    },
+    "license": "MIT",
+    "frameworks": "espidf",
+    "platforms": "*",
+    "build_flags": {
+        "include": "./src/HX711_ADC.h"
+    }
+
+
+}
