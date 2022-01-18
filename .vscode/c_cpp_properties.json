@@ -1,0 +1,35 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/home/dylan/.platformio/packages/framework-espidf/components/freertos/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/esp_common/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/freertos/port/xtensa/include",
+                "/home/dylan/Documents/PlatformIO/Projects/water-park-scale/.pio/build/esp32dev/config",
+                "/home/dylan/.platformio/packages/framework-espidf/components/xtensa/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/xtensa/esp32/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/esp_rom/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/esp_timer/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/esp_system/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/newlib/platform_include",
+                "/home/dylan/.platformio/packages/toolchain-xtensa32/xtensa-esp32-elf/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/esp_hw_support/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/hal/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/soc/esp32/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/hal/esp32/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/soc/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/heap/include",
+                "/home/dylan/.platformio/packages/framework-espidf/components/driver/include"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/lib64/ccache/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}
