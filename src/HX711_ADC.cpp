@@ -262,7 +262,7 @@ float HX711_ADC::getCalFactor()
 //if conversion is ready; read out 24 bit data and add to dataset, returns 1
 //if tare operation is complete, returns 2
 //else returns 0
-uint8_t HX711_ADC::update()
+uint8_t IRAM_ATTR HX711_ADC::update()
 {
 
 	byte dout = gpio_get_level(gpio_num_t(doutPin)); //check if conversion is ready
@@ -320,7 +320,7 @@ long HX711_ADC::smoothedData()
 	return (data >> divBit);
 }
 
-void HX711_ADC::conversion24bit() //read 24 bit data, store in dataset and start the next conversion
+void IRAM_ATTR HX711_ADC::conversion24bit() //read 24 bit data, store in dataset and start the next conversion
 {
 	conversionTime = micros() - conversionStartTime;
 	conversionStartTime = micros();
