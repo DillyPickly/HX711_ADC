@@ -16,6 +16,7 @@
 Note: HX711_ADC configuration values has been moved to file config.h
 */
 
+#define USE_MEDIAN_FILTER 1
 #define DATA_SET SAMPLES + IGN_HIGH_SAMPLE + IGN_LOW_SAMPLE // total samples in memory
 
 #if (SAMPLES != 1) & (SAMPLES != 2) & (SAMPLES != 4) & (SAMPLES != 8) & (SAMPLES != 16) & (SAMPLES != 32) & (SAMPLES != 64) & (SAMPLES != 128)
@@ -44,6 +45,7 @@ Note: HX711_ADC configuration values has been moved to file config.h
 #define DIVB 7
 #endif
 
+
 #define SIGNAL_TIMEOUT 100
 
 class HX711_ADC
@@ -63,7 +65,8 @@ public:
 	bool getTareStatus();							 //returns 'true' if tareNoDelay() operation is complete
 	void setCalFactor(float cal);					 //set new calibration factor, raw data is divided by this value to convert to readable data
 	float getCalFactor();							 //returns the current calibration factor
-	float getData();								 //returns data from the moving average dataset
+	float getData();	
+	bool isStable();							 //returns data from the moving average dataset
 	int getReadIndex();								 //for testing and debugging
 	float getConversionTime();						 //for testing and debugging
 	float getSPS();									 //for testing and debugging
@@ -87,12 +90,14 @@ public:
 protected:
 	void conversion24bit();					   //if conversion is ready: returns 24 bit data and starts the next conversion
 	long smoothedData();					   //returns the smoothed data value calculated from the dataset
+	long smoothedDataMedian();					   //returns the smoothed data value calculated from the dataset
 	uint8_t sckPin;							   //HX711 pd_sck pin
 	uint8_t doutPin;						   //HX711 dout pin
 	uint8_t GAIN;							   //HX711 GAIN
 	float calFactor = 1.0;					   //calibration factor as given in function setCalFactor(float cal)
 	float calFactorRecip = 1.0;				   //reciprocal calibration factor (1/calFactor), the HX711 raw data is multiplied by this value
-	volatile long dataSampleSet[DATA_SET + 1]; // dataset, make voltile if interrupt is used
+	/*volatile*/ long dataSampleSet[DATA_SET + 1]; // dataset, make voltile if interrupt is used
+	/*volatile*/ long dataSampleSetCopy[DATA_SET + 1]; // dataset, make voltile if interrupt is used
 	long tareOffset;
 	int readIndex = 0;
 	unsigned long conversionStartTime;
@@ -101,6 +106,7 @@ protected:
 	uint8_t tareTimes;
 	uint8_t divBit = DIVB;
 	const uint8_t divBitCompiled = DIVB;
+	bool stable; // are the readings stable
 	bool doTare;
 	bool startStatus;
 	unsigned long startMultipleTimeStamp;
